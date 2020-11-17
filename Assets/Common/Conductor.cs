@@ -23,11 +23,28 @@ public class Conductor : MonoBehaviour
     //an AudioSource attached to this GameObject that will play the music.
     public AudioSource musicSource;
 
+    //The offset to the first beat of the song in seconds
+    public float firstBeatOffset;
+
     // Start is called before the first frame update
     void Start()
     {
         //Load the AudioSource attached to the Conductor GameObject
         musicSource = GetComponent<AudioSource>();
+
+        songBpm = songBpm < 0 ? 0 : songBpm; // quick negative reset
+
+        // Automatically calculate song BPM if not specified
+        // Automatic calculation can be off, so try and rely on manual input
+        if(songBpm == 0){
+            songBpm = UniBpmAnalyzer.AnalyzeBpm(musicSource.clip);
+            if (songBpm < 0)
+            {
+                Debug.LogError("AudioClip is null.");
+                return;
+            }
+            Debug.Log("songBpm: " + songBpm);
+        }
 
         //Calculate the number of seconds in each beat
         secPerBeat = 60f / songBpm;
@@ -42,6 +59,10 @@ public class Conductor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //determine how many seconds since the song started
+        songPosition = (float)(AudioSettings.dspTime - dspSongTime - firstBeatOffset);
+
+        //determine how many beats since the song started
+        songPositionInBeats = songPosition / secPerBeat;
     }
 }
