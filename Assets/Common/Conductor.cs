@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Conductor : MonoBehaviour
 {  
+    // delegate for beat event
+    public delegate void BeatEvent(float songPositionInBeats);
+    public static event BeatEvent OnBeat;
 
     //Song beats per minute
     //This is determined by the song you're trying to sync up to
@@ -18,7 +21,7 @@ public class Conductor : MonoBehaviour
     //Current song position, in beats
     public float songPositionInBeats;
 
-    private int previousSongPositionInBeats;
+    private float previousSongPositionInBeats;
 
     //How many seconds have passed since the song started
     public float dspSongTime;
@@ -49,7 +52,6 @@ public class Conductor : MonoBehaviour
                 Debug.LogError("AudioClip is null.");
                 return;
             }
-            Debug.Log("songBpm: " + songBpm);
         }
 
         //Calculate the number of seconds in each beat
@@ -72,8 +74,15 @@ public class Conductor : MonoBehaviour
         songPosition = (float)musicSource.timeSamples * inverseSampleRate;
 
         //determine how many beats since the song started
-        // previousSongPositionInBeats = songPositionInBeats;
+        previousSongPositionInBeats = songPositionInBeats;
         songPositionInBeats = songPosition / secPerBeat;
+
+        // determine if new beat event
+        if(previousSongPositionInBeats != songPositionInBeats)
+        {
+            if(OnBeat != null)
+                OnBeat(songPositionInBeats);
+        }
 
     }
 

@@ -17,14 +17,16 @@ public class Composer : MonoBehaviour
     // amount of beats delayed for note spawn look ahead
     public int beatDelay;
 
-    private Array chartArray;
+    // private Array chartArray;
 
     // Start is called before the first frame update
     void Start()
     {
         conductor = GetComponent<Conductor>();
 
-        chartArray = loadChart();
+        // chartArray = loadChart();
+
+        Conductor.OnBeat += beatEvent;
 
     }
 
@@ -32,8 +34,11 @@ public class Composer : MonoBehaviour
     void Update()
     {
 
+    }
 
-        Debug.Log(conductor.songPositionInBeats);
+    void OnDestroy()
+    {
+        Conductor.OnBeat -= beatEvent;
     }
 
     private void generateNote()
@@ -41,12 +46,15 @@ public class Composer : MonoBehaviour
 
     }
 
-    
-
-    private loadChart()
+    private void loadChart()
     {
         // dummy values for now; have to parse chart
-        return new Array.CreateInstance(typeof((Int32,Int32)), (0,2), (1,3), (2,4));
+        // return new Array.CreateInstance(typeof((Int32,Int32)), (0,2), (1,3), (2,4));
+    }
+
+    private void beatEvent(float songPositionInBeats)
+    {
+        Debug.Log("Beat " + songPositionInBeats);
     }
 
 }
