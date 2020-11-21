@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Conductor : MonoBehaviour
 {  
+
     //Song beats per minute
     //This is determined by the song you're trying to sync up to
     public float songBpm;
@@ -17,6 +18,8 @@ public class Conductor : MonoBehaviour
     //Current song position, in beats
     public float songPositionInBeats;
 
+    private int previousSongPositionInBeats;
+
     //How many seconds have passed since the song started
     public float dspSongTime;
 
@@ -26,9 +29,12 @@ public class Conductor : MonoBehaviour
     //The offset to the first beat of the song in seconds
     public float firstBeatOffset;
 
+    // inverse the sample rate for calculation efficiency
+    private float inverseSampleRate;
+
     // Start is called before the first frame update
     void Start()
-    {
+    {  
         //Load the AudioSource attached to the Conductor GameObject
         musicSource = GetComponent<AudioSource>();
 
@@ -52,17 +58,27 @@ public class Conductor : MonoBehaviour
         //Record the time when the music starts
         dspSongTime = (float)AudioSettings.dspTime;
 
+        // Get inverse sample rate for calculating songPosition
+        inverseSampleRate = (float)1/musicSource.clip.frequency;
+
         //Start the music
-        musicSource.Play();
+        // musicSource.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //determine how many seconds since the song started
-        songPosition = (float)(AudioSettings.dspTime - dspSongTime - firstBeatOffset);
+        //determine how many seconds since the song started over the sample rate
+        songPosition = (float)musicSource.timeSamples * inverseSampleRate;
 
         //determine how many beats since the song started
+        // previousSongPositionInBeats = songPositionInBeats;
         songPositionInBeats = songPosition / secPerBeat;
+
+    }
+
+    public void start()
+    {
+        musicSource.Play();
     }
 }
