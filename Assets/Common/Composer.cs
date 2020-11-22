@@ -6,18 +6,15 @@ using UnityEditor;
 
 public class Composer : MonoBehaviour
 {   
-    // Needs to be able to get and play 4 (or n) blank beats before the start of playing notes and conductor
-    // Needs to be able to load chart , sync note creation with conductor, and parse chart (delegate to another class?)
 
-
-    // Get chart needing to be played
     // public Target chartLocation;
     public TextAsset chartFile;
+
     // Conductor class used to keep time
     public Conductor conductor;
 
     // amount of beats delayed for note spawn look ahead
-    public int beatDelay;
+    // public int beatDelay;
 
     private Chart chart;
 
@@ -36,7 +33,7 @@ public class Composer : MonoBehaviour
         this.conductor = GetComponent<Conductor>();
         Conductor.OnBeat += beatEvent;
 
-        // this.conductor.startMusic();
+        this.conductor.startMusic();
     }
 
     // Update is called once per frame
@@ -69,7 +66,6 @@ public class Composer : MonoBehaviour
     private void beatEvent(float songPositionInBeats)
     {
         this.songPositionInBeats = songPositionInBeats;
-        Debug.Log("Called beat event");
     }
 
 }

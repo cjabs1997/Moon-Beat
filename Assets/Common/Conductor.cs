@@ -32,6 +32,10 @@ public class Conductor : MonoBehaviour
     //The offset to the first beat of the song in seconds
     public float firstBeatOffset;
 
+    private float delay;
+
+    private bool delayedPlaying;
+
     // inverse the sample rate for calculation efficiency
     private float inverseSampleRate;
 
@@ -64,9 +68,16 @@ public class Conductor : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        if(delayedPlaying && musicSource.time == 0)
+        {
+            this.delay = musicSource.clip.frequency * ((float)  AudioSettings.dspTime - dspSongTime);
+        }else{
+            delayedPlaying = false;
+        }
+
         //determine how many seconds since the song started over the sample rate
-        songPosition = (float)musicSource.timeSamples * inverseSampleRate;
+        songPosition = ((float)musicSource.timeSamples + this.delay) * inverseSampleRate;
 
         previousSongPositionInBeats = songPositionInBeats;
 
@@ -92,7 +103,7 @@ public class Conductor : MonoBehaviour
     {
         //Record the time when the music starts
         dspSongTime = (float)AudioSettings.dspTime;
-
-        musicSource.Play();
+        delayedPlaying = true;
+        musicSource.PlayDelayed(firstBeatOffset * secPerBeat);
     }
 }
