@@ -57,14 +57,9 @@ public class Conductor : MonoBehaviour
         //Calculate the number of seconds in each beat
         secPerBeat = 60f / songBpm;
 
-        //Record the time when the music starts
-        dspSongTime = (float)AudioSettings.dspTime;
-
         // Get inverse sample rate for calculating songPosition
         inverseSampleRate = (float)1/musicSource.clip.frequency;
 
-        //Start the music
-        // musicSource.Play();
     }
 
     // Update is called once per frame
@@ -73,8 +68,9 @@ public class Conductor : MonoBehaviour
         //determine how many seconds since the song started over the sample rate
         songPosition = (float)musicSource.timeSamples * inverseSampleRate;
 
-        //determine how many beats since the song started
         previousSongPositionInBeats = songPositionInBeats;
+
+        //determine how many beats since the song started
         songPositionInBeats = songPosition / secPerBeat;
 
         // determine if new beat event
@@ -86,8 +82,17 @@ public class Conductor : MonoBehaviour
 
     }
 
-    public void start()
+    public void setBPM(int bpm)
     {
+        this.songBpm = bpm;
+        this.secPerBeat = 60f / this.songBpm;
+    }
+
+    public void startMusic()
+    {
+        //Record the time when the music starts
+        dspSongTime = (float)AudioSettings.dspTime;
+
         musicSource.Play();
     }
 }

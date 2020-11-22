@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEditor;
 
 public class Composer : MonoBehaviour
 {   
@@ -9,31 +11,48 @@ public class Composer : MonoBehaviour
 
 
     // Get chart needing to be played
-    // public <type> chart;
-
+    // public Target chartLocation;
+    public TextAsset chartFile;
     // Conductor class used to keep time
     public Conductor conductor;
 
     // amount of beats delayed for note spawn look ahead
     public int beatDelay;
 
+    private Chart chart;
+
+    private int resolution;
+
+    private List<Tuple<float,int,string,float>> curBeatNotes;
+
+    private float songPositionInBeats;
     // private Array chartArray;
 
     // Start is called before the first frame update
     void Start()
-    {
-        conductor = GetComponent<Conductor>();
-
-        // chartArray = loadChart();
-
+    {   
+        
+        this.chart = new Chart(chartFile);
+        this.conductor = GetComponent<Conductor>();
         Conductor.OnBeat += beatEvent;
 
+        // this.conductor.startMusic();
     }
 
     // Update is called once per frame
     void Update()
-    {
-
+    {   
+        // get next note if necessary
+        if(this.curBeatNotes == null)
+        {
+            this.curBeatNotes = this.chart.getNextNotes();
+        }
+        //spawn note if you have notes
+        if(this.curBeatNotes != null && this.curBeatNotes[0].Item1 < this.songPositionInBeats)
+        {
+            generateNotes(this.curBeatNotes);
+            this.curBeatNotes = null;
+        }
     }
 
     void OnDestroy()
@@ -41,20 +60,16 @@ public class Composer : MonoBehaviour
         Conductor.OnBeat -= beatEvent;
     }
 
-    private void generateNote()
+    private void generateNotes(List<Tuple<float,int,string,float>> notes)
     {
-
-    }
-
-    private void loadChart()
-    {
-        // dummy values for now; have to parse chart
-        // return new Array.CreateInstance(typeof((Int32,Int32)), (0,2), (1,3), (2,4));
+        for(int i = 0; i < notes.Count; ++i)
+            Debug.Log("Generated - songpos: " + notes[i].Item1 + " noteInt: " + notes[i].Item2 + " noteType: " + notes[i].Item3 + " noteLength: " + notes[i].Item4);
     }
 
     private void beatEvent(float songPositionInBeats)
     {
-        Debug.Log("Beat " + songPositionInBeats);
+        this.songPositionInBeats = songPositionInBeats;
+        Debug.Log("Called beat event");
     }
 
 }
