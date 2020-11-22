@@ -39,9 +39,12 @@ public class Conductor : MonoBehaviour
     // inverse the sample rate for calculation efficiency
     private float inverseSampleRate;
 
+    public bool isPlaying;
+
     // Start is called before the first frame update
     void Start()
     {  
+
         //Load the AudioSource attached to the Conductor GameObject
         musicSource = GetComponent<AudioSource>();
 
@@ -69,6 +72,7 @@ public class Conductor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+        // delay calculations
         if(delayedPlaying && musicSource.time == 0)
         {
             this.delay = musicSource.clip.frequency * ((float)  AudioSettings.dspTime - dspSongTime);
@@ -90,6 +94,8 @@ public class Conductor : MonoBehaviour
             if(OnBeat != null)
                 OnBeat(songPositionInBeats);
         }
+
+        isPlaying = musicSource.isPlaying;
 
     }
 

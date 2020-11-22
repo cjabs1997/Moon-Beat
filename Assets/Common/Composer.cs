@@ -13,9 +13,6 @@ public class Composer : MonoBehaviour
     // Conductor class used to keep time
     public Conductor conductor;
 
-    // amount of beats delayed for note spawn look ahead
-    // public int beatDelay;
-
     private Chart chart;
 
     private int resolution;
@@ -23,7 +20,6 @@ public class Composer : MonoBehaviour
     private List<Tuple<float,int,string,float>> curBeatNotes;
 
     private float songPositionInBeats;
-    // private Array chartArray;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +41,7 @@ public class Composer : MonoBehaviour
             this.curBeatNotes = this.chart.getNextNotes();
         }
         //spawn note if you have notes
-        if(this.curBeatNotes != null && this.curBeatNotes[0].Item1 < this.songPositionInBeats)
+        if(this.curBeatNotes != null && this.curBeatNotes[0].Item1 < this.songPositionInBeats && conductor.isPlaying)
         {
             generateNotes(this.curBeatNotes);
             this.curBeatNotes = null;
@@ -59,6 +55,7 @@ public class Composer : MonoBehaviour
 
     private void generateNotes(List<Tuple<float,int,string,float>> notes)
     {
+        // Tuple< songposition, note integer, note type, note length >
         for(int i = 0; i < notes.Count; ++i)
             Debug.Log("Generated - songpos: " + notes[i].Item1 + " noteInt: " + notes[i].Item2 + " noteType: " + notes[i].Item3 + " noteLength: " + notes[i].Item4);
     }

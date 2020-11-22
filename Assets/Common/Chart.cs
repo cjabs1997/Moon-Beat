@@ -61,6 +61,8 @@ public class Chart
     public List<Tuple<float,int,string,float>> getNextNotes()
     {
         // just needs to serve the next note info; no need to keep tempo
+        if(this.playList.Count == 0)
+            return null;
         List<Tuple<float,int,string,float>> last = new List<Tuple<float,int,string,float>>(this.playList[this.playList.Count-1]);
         this.playList.RemoveAt(this.playList.Count-1);
         return last;
@@ -106,10 +108,9 @@ public class Chart
                 multiNotes.Add( new Tuple<float,int,string,float>(beatPos, noteInt, noteType, length) );
             }
             if(multiNotes.Count > 0)
-                res.Add(multiNotes);
+                res.Insert(0, multiNotes);
         }
 
-        res.Reverse();
         return res;
     }
 
