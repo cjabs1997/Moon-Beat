@@ -10,7 +10,6 @@ public class Composer : MonoBehaviour
     public delegate void GenNote(Tuple<float,int,string,float> noteInfo);
     public static event GenNote GenNoteCallback;
 
-
     // public Target chartLocation;
     public TextAsset chartFile;
 
@@ -62,8 +61,10 @@ public class Composer : MonoBehaviour
         // Tuple< songposition, note integer, note type, note length >
         for(int i = 0; i < notes.Count; ++i)
         {
-            Debug.Log("Generated - songpos: " + notes[i].Item1 + " noteInt: " + notes[i].Item2 + " noteType: " + notes[i].Item3 + " noteLength: " + notes[i].Item4);
-            GenNoteCallback(notes[i]);
+            Tuple<float,int,string,float> note = notes[i];
+            Debug.Log("Generated - songpos: " + note.Item1 + " noteInt: " + note.Item2 + " noteType: " + note.Item3 + " noteLength: " + note.Item4);
+            if(GenNoteCallback != null)
+                GenNoteCallback(note);
         }
             
         
