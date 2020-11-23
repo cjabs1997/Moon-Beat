@@ -16,6 +16,8 @@ public class Composer : MonoBehaviour
     // Conductor class used to keep time
     public Conductor conductor;
 
+    public bool autoStartSong;
+
     private Chart chart;
 
     private int resolution;
@@ -32,6 +34,8 @@ public class Composer : MonoBehaviour
         this.conductor = GetComponent<Conductor>();
         Conductor.OnBeat += beatEvent;
 
+        if(autoStartSong)
+            this.conductor.startMusic();
     }
 
     // Update is called once per frame
@@ -58,6 +62,11 @@ public class Composer : MonoBehaviour
     public void startSong()
     {
         this.conductor.startMusic();
+    }
+
+    public void stopSong()
+    {
+        this.conductor.stopMusic();
     }
 
     private void generateNotes(List<Tuple<float,int,string,float>> notes)

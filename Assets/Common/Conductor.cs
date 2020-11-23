@@ -112,4 +112,9 @@ public class Conductor : MonoBehaviour
         delayedPlaying = true;
         musicSource.PlayDelayed(firstBeatOffset * secPerBeat);
     }
+
+    public void stopMusic()
+    {
+        musicSource.Pause();
+    }
 }
