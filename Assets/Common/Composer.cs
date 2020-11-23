@@ -62,7 +62,7 @@ public class Composer : MonoBehaviour
         for(int i = 0; i < notes.Count; ++i)
         {
             Tuple<float,int,string,float> note = notes[i];
-            Debug.Log("Generated - songpos: " + note.Item1 + " noteInt: " + note.Item2 + " noteType: " + note.Item3 + " noteLength: " + note.Item4);
+            // Debug.Log("Generated - songpos: " + note.Item1 + " noteInt: " + note.Item2 + " noteType: " + note.Item3 + " noteLength: " + note.Item4);
             if(GenNoteCallback != null)
                 GenNoteCallback(note);
         }
