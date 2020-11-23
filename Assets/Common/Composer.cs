@@ -32,7 +32,6 @@ public class Composer : MonoBehaviour
         this.conductor = GetComponent<Conductor>();
         Conductor.OnBeat += beatEvent;
 
-        this.conductor.startMusic();
     }
 
     // Update is called once per frame
@@ -54,6 +53,11 @@ public class Composer : MonoBehaviour
     void OnDestroy()
     {
         Conductor.OnBeat -= beatEvent;
+    }
+
+    public void startSong()
+    {
+        this.conductor.startMusic();
     }
 
     private void generateNotes(List<Tuple<float,int,string,float>> notes)
