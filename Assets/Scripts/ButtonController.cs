@@ -13,26 +13,32 @@ public class ButtonController : MonoBehaviour
 
     private SpriteRenderer m_SpriteRenderer;
     private GameObject selectedNote;
+    private Animator m_Animator;
 
     private void Awake()
     {
         m_SpriteRenderer = this.GetComponent<SpriteRenderer>();
+        m_Animator = this.GetComponent<Animator>();
     }
 
 
     void Update()
     {
-
-        if(Input.GetKeyDown(activationKey) && selectedNote)
+        // If the activationKey was hit this frame
+        if(Input.GetKeyDown(activationKey))
         {
-            selectedNote.GetComponent<NoteController>().DestroyNote();
-        }
-        else if(Input.GetKey(activationKey))
-        {
+            m_Animator.SetBool("Selected", true);
             m_SpriteRenderer.color = pressedColor;
+
+            // If there is a note within our collider destroy it
+            if (selectedNote)
+            {
+                selectedNote.GetComponent<NoteController>().DestroyNote();
+            }
         }
         else if(Input.GetKeyUp(activationKey))
         {
+            if (m_Animator) { m_Animator.SetBool("Selected", false); }
             m_SpriteRenderer.color = defaultColor;
         }
     }

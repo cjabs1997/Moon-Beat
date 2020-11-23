@@ -23,6 +23,11 @@ public class NoteController : MonoBehaviour
         m_CinemachineImpulseSource = this.GetComponent<CinemachineImpulseSource>();
     }
 
+    private void Update()
+    {
+        //this.gameObject.transform.Rotate(Vector3.forward * 1080f * Time.deltaTime);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         buttonY = collision.gameObject.transform.position.y;
@@ -32,7 +37,7 @@ public class NoteController : MonoBehaviour
     {
         GameObject.Instantiate(explosionEffect, this.transform.position, Quaternion.identity);
         m_CinemachineImpulseSource.GenerateImpulse();
-        Debug.Log("DISTANCE: " + (this.gameObject.transform.position.y - buttonY));
+        //Debug.Log("DISTANCE: " + (this.gameObject.transform.position.y - buttonY));
         Destroy(this.gameObject);
     }
 }

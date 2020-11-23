@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7671257926132558693}
   - component: {fileID: 7671257926132558692}
   - component: {fileID: 7671257926132556955}
+  - component: {fileID: 1245730448}
   m_Layer: 0
   m_Name: Button_3
   m_TagString: Untagged
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e8e2c8e85a438b045abac6178876f7ba, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7294118}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -147,6 +148,25 @@ MonoBehaviour:
   activationKey: 51
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   pressedColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+--- !u!95 &1245730448
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7671257926132556953}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2b58b5a55ad1adb498ceb4515e2c5da6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7671257926491276225
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +180,7 @@ GameObject:
   - component: {fileID: 7671257926491276237}
   - component: {fileID: 7671257926491276236}
   - component: {fileID: 7671257926491276227}
+  - component: {fileID: 2014890208}
   m_Layer: 0
   m_Name: Button_5
   m_TagString: Untagged
@@ -222,7 +243,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e8e2c8e85a438b045abac6178876f7ba, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7294118}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -294,6 +315,25 @@ MonoBehaviour:
   activationKey: 53
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   pressedColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+--- !u!95 &2014890208
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7671257926491276225}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2b58b5a55ad1adb498ceb4515e2c5da6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7671257926545120595
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,6 +347,7 @@ GameObject:
   - component: {fileID: 7671257926545120607}
   - component: {fileID: 7671257926545120606}
   - component: {fileID: 7671257926545120605}
+  - component: {fileID: 491018188}
   m_Layer: 0
   m_Name: Button_2
   m_TagString: Untagged
@@ -369,7 +410,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e8e2c8e85a438b045abac6178876f7ba, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7294118}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -441,6 +482,25 @@ MonoBehaviour:
   activationKey: 50
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   pressedColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+--- !u!95 &491018188
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7671257926545120595}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2b58b5a55ad1adb498ceb4515e2c5da6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7671257926813571070
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,6 +514,7 @@ GameObject:
   - component: {fileID: 7671257926813571066}
   - component: {fileID: 7671257926813571065}
   - component: {fileID: 7671257926813571064}
+  - component: {fileID: 669326607}
   m_Layer: 0
   m_Name: Button_4
   m_TagString: Untagged
@@ -516,7 +577,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e8e2c8e85a438b045abac6178876f7ba, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7294118}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -588,6 +649,25 @@ MonoBehaviour:
   activationKey: 52
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   pressedColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+--- !u!95 &669326607
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7671257926813571070}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2b58b5a55ad1adb498ceb4515e2c5da6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7671257927403646710
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,6 +681,7 @@ GameObject:
   - component: {fileID: 7671257927403646707}
   - component: {fileID: 7671257927403646706}
   - component: {fileID: 7671257927403646711}
+  - component: {fileID: 559547378}
   m_Layer: 0
   m_Name: Button_1
   m_TagString: Untagged
@@ -663,7 +744,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e8e2c8e85a438b045abac6178876f7ba, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7294118}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -735,6 +816,25 @@ MonoBehaviour:
   activationKey: 49
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   pressedColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+--- !u!95 &559547378
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7671257927403646710}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2b58b5a55ad1adb498ceb4515e2c5da6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7671257927664741447
 GameObject:
   m_ObjectHideFlags: 0
