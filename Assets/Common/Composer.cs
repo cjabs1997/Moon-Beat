@@ -33,6 +33,7 @@ public class Composer : MonoBehaviour
         this.chart = new Chart(chartFile);
         this.conductor = GetComponent<Conductor>();
         Conductor.OnBeat += beatEvent;
+        Chart.BPMChangeCallback += updateBeat;
 
         if(autoStartSong)
             this.conductor.startMusic();
@@ -52,6 +53,7 @@ public class Composer : MonoBehaviour
             generateNotes(this.curBeatNotes);
             this.curBeatNotes = null;
         }
+
     }
 
     void OnDestroy()
@@ -67,6 +69,11 @@ public class Composer : MonoBehaviour
     public void stopSong()
     {
         this.conductor.stopMusic();
+    }
+
+    private void updateBeat(float bpm)
+    {
+        this.conductor.setBPM(bpm);
     }
 
     private void generateNotes(List<Tuple<float,int,string,float>> notes)

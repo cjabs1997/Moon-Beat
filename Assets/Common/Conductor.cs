@@ -99,7 +99,7 @@ public class Conductor : MonoBehaviour
 
     }
 
-    public void setBPM(int bpm)
+    public void setBPM(float bpm)
     {
         this.songBpm = bpm;
         this.secPerBeat = 60f / this.songBpm;

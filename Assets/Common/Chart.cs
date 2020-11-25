@@ -8,14 +8,33 @@ using UnityEditor;
 public class Chart
 {   
 
+    // TODO Extract BPM from chart file and event emit it
+    // TODO Call event emit everytime there's a bpm change
+
+    // bpm 
+    public delegate void BPMChange(float newBPM);
+    public static event BPMChange BPMChangeCallback;
+    private List<Tuple<float, float>> bpms;
+
+    // chart parsing
     private string chart;
     private Dictionary<string, Dictionary<string, List<string>>> chartSections;
+
+    // regex
     private static Regex sectionMatcher = new Regex(@"\[(?<key>.+?)\][\n\r]+\{[\n\r]+(?<values>.+?)[\n\r]+\}", RegexOptions.Singleline | RegexOptions.Compiled);
     private static Regex sectionParse = new Regex(@"(.+?)=(.+)", RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
+
+    // data holders
     private readonly Dictionary<string, string> metadata;
     private List<List<Tuple<float,int,string,float>>> playList; 
-    private static string notesSection = "ExpertSingle";
+
+
+    // variables to read sections
+    private static string bpmSection = "SyncTrack";
+    private static string notesSection = "ExpertSingle"; // hardcoded for now
     private static string metadataSection = "Song";
+
+    #region Init Functions
 
     public Chart(TextAsset chartAsset)
     {   
@@ -24,10 +43,11 @@ public class Chart
         parseChart(this.chart);
         this.metadata = convertMetadata();
         this.playList = genNotesToPlay();
+        this.bpms = convertBpm();
     }
 
     private void parseChart(string chart){
-        MatchCollection matches = sectionMatcher.Matches(chart);
+        var matches = sectionMatcher.Matches(chart);
 
         if(matches.Count > 0)
             foreach(Match m in matches)
@@ -36,7 +56,7 @@ public class Chart
 
     private Dictionary<string, List<string>> extractSectionValues(string input)
     {
-        Dictionary<string, List<string>> results = new Dictionary<string, List<string>>();
+        var results = new Dictionary<string, List<string>>();
         MatchCollection matches = sectionParse.Matches(input);
 
         if(matches.Count > 0)
@@ -46,7 +66,7 @@ public class Chart
                 string value = m.Groups[2].Value.Trim();
                 // There's probably a simpler way of doing this, but don't know c# enough
                 if(!results.ContainsKey(key)){
-                    List<string> t = new List<string>();
+                    var t = new List<string>();
                     t.Add(value);
                     results.Add(key, t);
                 }else{
@@ -56,14 +76,25 @@ public class Chart
         return results;
     }
 
-    // public functions
+    #endregion
+
+    #region Public Functions
 
     public List<Tuple<float,int,string,float>> getNextNotes()
     {
         // just needs to serve the next note info; no need to keep tempo
         if(this.playList.Count == 0)
             return null;
-        List<Tuple<float,int,string,float>> last = new List<Tuple<float,int,string,float>>(this.playList[this.playList.Count-1]);
+        var last = new List<Tuple<float,int,string,float>>(this.playList[this.playList.Count-1]);
+
+        // emit event if bpm changes
+        if(this.bpms.Count > 0 && last[0].Item1 == this.bpms[this.bpms.Count - 1].Item1 && BPMChangeCallback != null)
+        {
+            BPMChangeCallback(this.bpms[this.bpms.Count - 1].Item2);
+            this.bpms.RemoveAt(this.bpms.Count - 1);
+        }
+
+        // remove note from playlist
         this.playList.RemoveAt(this.playList.Count-1);
         return last;
     }
@@ -73,11 +104,14 @@ public class Chart
         return metadata;
     }
 
-    // utility functions
+    #endregion
+
+    #region Utility Functions
+
     private Dictionary<string, string> convertMetadata()
     {
-        Dictionary<string, string> returnCopy = new Dictionary<string, string>();
-        Dictionary<string, List<string>> metaSection = chartSections[metadataSection];
+        var returnCopy = new Dictionary<string, string>();
+        var metaSection = chartSections[metadataSection];
         foreach(string key in metaSection.Keys){
             returnCopy.Add(key, metaSection[key][0]);
         }
@@ -87,25 +121,25 @@ public class Chart
     
     private List<List<Tuple<float,int,string,float>>> genNotesToPlay()
     {
-        List<List<Tuple<float,int,string,float>>> res = new List<List<Tuple<float,int,string,float>>>();
+        // result to create to return
+        var res = new List<List<Tuple<float,int,string,float>>>(); // Tuple< songposition, note integer, note type, note length >
 
-        foreach(string beat in chartSections[notesSection].Keys)
+        foreach(var beat in chartSections[notesSection].Keys)
         {
+            // convert the beat postion
             float beatPos = float.Parse(beat) / float.Parse(this.metadata["Resolution"]);
-            List<Tuple<float,int,string,float>> multiNotes = new List<Tuple<float,int,string,float>>();
-            foreach(string note in chartSections[notesSection][beat])
+            var multiNotes = new List<Tuple<float,int,string,float>>();
+            foreach(var note in chartSections[notesSection][beat])
             {
                 string[] noteInfo = note.Split();
-                string noteType = noteInfo[0];
+                var noteType = noteInfo[0];
                 int noteInt;
                 float length;
                 if(noteType.Equals("N")){
                     noteInt = Int32.Parse(noteInfo[1]);
                     length = float.Parse(noteInfo[2]) / float.Parse(this.metadata["Resolution"]);
-                }else{
-                    continue;
+                    multiNotes.Add( new Tuple<float,int,string,float>(beatPos, noteInt, noteType, length) );
                 }
-                multiNotes.Add( new Tuple<float,int,string,float>(beatPos, noteInt, noteType, length) );
             }
             if(multiNotes.Count > 0)
                 res.Insert(0, multiNotes);
@@ -114,4 +148,19 @@ public class Chart
         return res;
     }
 
+    private List<Tuple<float, float>> convertBpm()
+    {
+        var bpms = new List<Tuple<float, float>>();
+        foreach(var bpm in chartSections[bpmSection].Keys)
+        {
+            var val = chartSections[bpmSection][bpm][0].Split();
+            if(val.Length > 0 && val[0] == "B")
+            {
+                bpms.Insert(0, new Tuple<float, float>(float.Parse(val[1]), float.Parse(bpm)));
+            }
+        }
+        return bpms;
+    }
+
+    #endregion
 }
