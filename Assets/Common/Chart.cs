@@ -88,10 +88,10 @@ public class Chart
         var last = new List<Tuple<float,int,string,float>>(this.playList[this.playList.Count-1]);
 
         // emit event if bpm changes
-        if(this.bpms.Count > 0 && last[0].Item1 == this.bpms[this.bpms.Count - 1].Item1 && BPMChangeCallback != null)
+        var bpm = getBPMAt(last[0].Item1);
+        if(BPMChangeCallback != null &&  bpm >= 0)
         {
-            BPMChangeCallback(this.bpms[this.bpms.Count - 1].Item2);
-            this.bpms.RemoveAt(this.bpms.Count - 1);
+            BPMChangeCallback(bpm);
         }
 
         // remove note from playlist
@@ -102,6 +102,17 @@ public class Chart
     public Dictionary<string, string> getMetadata()
     {
         return metadata;
+    }
+
+    public float getBPMAt(float time)
+    {
+        if(this.bpms.Count > 0 && time >= this.bpms[this.bpms.Count - 1].Item1)
+        {
+            var res = this.bpms[this.bpms.Count - 1].Item2;
+            this.bpms.RemoveAt(this.bpms.Count - 1);
+            return res;
+        }
+        return -1;
     }
 
     #endregion
@@ -151,12 +162,16 @@ public class Chart
     private List<Tuple<float, float>> convertBpm()
     {
         var bpms = new List<Tuple<float, float>>();
-        foreach(var bpm in chartSections[bpmSection].Keys)
-        {
-            var val = chartSections[bpmSection][bpm][0].Split();
-            if(val.Length > 0 && val[0] == "B")
-            {
-                bpms.Insert(0, new Tuple<float, float>(float.Parse(val[1]), float.Parse(bpm)));
+        foreach(var bpmPos in chartSections[bpmSection].Keys)
+        {   
+            foreach(var v in chartSections[bpmSection][bpmPos]){
+                var val = v.Split();
+                if(val.Length > 0 && val[0] == "B")
+                {  
+                    // bpm needs to be scaled down by 1000
+                    float bpm = float.Parse(val[1]) / 1000;
+                    bpms.Insert(0, new Tuple<float, float>( float.Parse(bpmPos) / float.Parse(this.metadata["Resolution"]), bpm));
+                }
             }
         }
         return bpms;
