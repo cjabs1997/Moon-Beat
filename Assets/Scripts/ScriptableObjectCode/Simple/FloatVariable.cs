@@ -11,6 +11,7 @@ using UnityEngine;
 public class FloatVariable : ScriptableObject
 {
     public float Value;
+    public float defaultValue;
 
     /// <summary>
     /// Changes the current Value by the given amount. Takes into consideration the max possible value.
@@ -46,5 +47,13 @@ public class FloatVariable : ScriptableObject
     public void SetValue(FloatVariable value)
     {
         Value = value.Value;
+    }
+
+    /// <summary>
+    /// Resets the current Value to the defaultValue.
+    /// </summary>
+    public void ResetValue()
+    {
+        Value = defaultValue;
     }
 }

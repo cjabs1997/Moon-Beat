@@ -13,6 +13,7 @@ using Cinemachine;
 public class NoteController : MonoBehaviour
 {
     public GameObject explosionEffect;
+    public GameEvent noteHitEvent;
 
     private float buttonY;
     private CinemachineImpulseSource m_CinemachineImpulseSource;
@@ -34,6 +35,7 @@ public class NoteController : MonoBehaviour
 
     public void DestroyNote()
     {
+        noteHitEvent.Raise();
         GameObject.Instantiate(explosionEffect, this.transform.position, Quaternion.identity);
         m_CinemachineImpulseSource.GenerateImpulse();
         Debug.Log("DISTANCE: " + (this.gameObject.transform.position.y - buttonY));

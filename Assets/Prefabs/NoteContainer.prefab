@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 9161832214396399882, guid: 8641459bc7284f641b30c2bf8f8e0288, type: 3}
+  noteHitEvent: {fileID: 11400000, guid: 2ff79632d67253047bb64183b20c291c, type: 2}
 --- !u!114 &6169160740619139869
 MonoBehaviour:
   m_ObjectHideFlags: 0

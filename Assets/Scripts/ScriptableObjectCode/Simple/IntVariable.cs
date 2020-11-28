@@ -6,7 +6,7 @@ using UnityEngine;
 public class IntVariable : NumVariable<int>
 {
     /// <summary>
-    /// Changes the current Value by the given amount. Takes into consideration the max possible value.
+    /// Changes the current Value by the given amount.
     /// </summary>
     /// <param name="value">The value to modify the current Value.</param>
     public override void ChangeValue(int value)
@@ -15,7 +15,7 @@ public class IntVariable : NumVariable<int>
     }
 
     /// <summary>
-    /// Changes the current Value by the given amount. Takes into consideration the max possible value.
+    /// Changes the current Value by the given amount.
     /// </summary>
     /// <param name="value">The value to modify the current Value.</param>
     public void ChangeValue(IntVariable value)
@@ -24,7 +24,7 @@ public class IntVariable : NumVariable<int>
     }
 
     /// <summary>
-    /// Sets the current Value to the given value. Does not take into consideration the max possible value.
+    /// Sets the current Value to the given value.
     /// </summary>
     /// <param name="value">The value to set the current Value to.</param>
     public override void SetValue(int value)
@@ -33,7 +33,7 @@ public class IntVariable : NumVariable<int>
     }
 
     /// <summary>
-    /// Sets the current Value to the given value. Does not take into consideration the max possible value.
+    /// Sets the current Value to the given value.
     /// </summary>
     /// <param name="value">The value to set the current Value to.</param>
     public void SetValue(IntVariable value)
@@ -43,7 +43,7 @@ public class IntVariable : NumVariable<int>
 
 
     /// <summary>
-    /// Resets the current value and max value to their default values.
+    /// Resets the current value to its default values.
     /// </summary>
     public override void ResetValue()
     {
