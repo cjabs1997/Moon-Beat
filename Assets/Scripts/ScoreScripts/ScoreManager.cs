@@ -40,7 +40,9 @@ public class ScoreManager : MonoBehaviour
         ResetValues();
     }
 
-
+    /// <summary>
+    /// Helper function for reseting values. Called on Awake but can be used to manually reset values without reloading scene.
+    /// </summary>
     private void ResetValues()
     {
         score.ResetValue();
@@ -49,9 +51,12 @@ public class ScoreManager : MonoBehaviour
         updateScoreEvent.Raise();
     }
 
-
+    /// <summary>
+    /// Called when the player misses a note. Determines if the multiplier should go down or not and raises the appropriate event if so.
+    /// </summary>
     public void NoteMissed()
     {
+        numNotesHitInARow = 0;
         ++numNotesMissedInARow;
 
         numNotesMissedInARow = numNotesMissedInARow % scaleMissNumNotes;
@@ -63,8 +68,12 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when a player hits a note. Upddtes the score and determines if the mutliplier should increase. Fires off appropriate events
+    /// </summary>
     public void NoteHit()
     {
+        numNotesMissedInARow = 0;
         ++numNotesHitInARow;
 
         score.Value = (int)(score.Value + (baseNoteValue * currMultiplier.Value));

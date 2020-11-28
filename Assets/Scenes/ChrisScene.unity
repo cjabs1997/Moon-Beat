@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187c3e581a7778140966ed75abac241f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: c5c3aa9542ecfe84686c3d89ed38a627, type: 2}
+  Event: {fileID: 11400000, guid: 7376aeb3644db0746923acef78bc2be7, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
@@ -1153,6 +1153,7 @@ GameObject:
   - component: {fileID: 2050448386}
   - component: {fileID: 2050448385}
   - component: {fileID: 2050448387}
+  - component: {fileID: 2050448388}
   m_Layer: 0
   m_Name: ScoreManagement
   m_TagString: Untagged
@@ -1179,8 +1180,8 @@ MonoBehaviour:
   maxMultiplier: 4
   multiplierScaleHit: 0.2
   scaleHitNumNotes: 1
-  multiplierScaleMiss: 10000
-  scaleMissNumNotes: 1
+  multiplierScaleMiss: 1
+  scaleMissNumNotes: 3
   updateMultiplierEvent: {fileID: 11400000, guid: 7376aeb3644db0746923acef78bc2be7, type: 2}
 --- !u!4 &2050448386
 Transform:
@@ -1215,6 +1216,34 @@ MonoBehaviour:
       - m_Target: {fileID: 2050448385}
         m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
         m_MethodName: NoteHit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2050448388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050448384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 187c3e581a7778140966ed75abac241f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 21f7b0bca26474e4e8aa5caa32795579, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2050448385}
+        m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
+        m_MethodName: NoteMissed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

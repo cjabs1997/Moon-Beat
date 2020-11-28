@@ -146,8 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationKey: 51
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  pressedColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+  defaultColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+  pressedColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 0.78431374}
 --- !u!95 &1245730448
 Animator:
   serializedVersion: 3
@@ -313,8 +313,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationKey: 53
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  pressedColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+  defaultColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+  pressedColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 0.78431374}
 --- !u!95 &2014890208
 Animator:
   serializedVersion: 3
@@ -480,8 +480,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationKey: 50
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  pressedColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+  defaultColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+  pressedColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 0.78431374}
 --- !u!95 &491018188
 Animator:
   serializedVersion: 3
@@ -647,8 +647,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationKey: 52
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  pressedColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+  defaultColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+  pressedColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 0.78431374}
 --- !u!95 &669326607
 Animator:
   serializedVersion: 3
@@ -814,8 +814,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationKey: 49
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  pressedColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+  defaultColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+  pressedColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 0.78431374}
 --- !u!95 &559547378
 Animator:
   serializedVersion: 3
