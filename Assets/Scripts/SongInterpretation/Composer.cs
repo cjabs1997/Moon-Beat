@@ -33,9 +33,16 @@ public class Composer : MonoBehaviour
         this.chart = new Chart(chartFile);
         this.conductor = GetComponent<Conductor>();
         Conductor.OnBeat += beatEvent;
+        Chart.BPMChangeCallback += updateBeat;
 
         if(autoStartSong)
             this.conductor.startMusic();
+
+        var chartBPM = this.chart.getBPMAt(0);
+        if(chartBPM >= 0)
+            this.conductor.setBPM(chartBPM);
+        else
+            Debug.Log("WTF");
     }
 
     // Update is called once per frame
@@ -52,6 +59,7 @@ public class Composer : MonoBehaviour
             generateNotes(this.curBeatNotes);
             this.curBeatNotes = null;
         }
+
     }
 
     void OnDestroy()
@@ -69,6 +77,12 @@ public class Composer : MonoBehaviour
         this.conductor.stopMusic();
     }
 
+    private void updateBeat(float bpm)
+    {
+        this.conductor.setBPM(bpm);
+        Debug.Log("BPM UPDATED TO " + bpm);
+    }
+
     private void generateNotes(List<Tuple<float,int,string,float>> notes)
     {
         // Tuple< songposition, note integer, note type, note length >
@@ -80,7 +94,6 @@ public class Composer : MonoBehaviour
                 GenNoteCallback(note);
         }
             
-        
     }
 
     private void beatEvent(float songPositionInBeats)
