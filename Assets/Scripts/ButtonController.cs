@@ -33,7 +33,7 @@ public class ButtonController : MonoBehaviour
             // If there is a note within our collider destroy it
             if (selectedNote)
             {
-                selectedNote.GetComponent<NoteController>().DestroyNote();
+                selectedNote.GetComponent<NoteController>().HitNote();
             }
         }
         else if(Input.GetKeyUp(activationKey))

@@ -127,6 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 9161832214396399882, guid: 8641459bc7284f641b30c2bf8f8e0288, type: 3}
+  noteHitEvent: {fileID: 11400000, guid: 2ff79632d67253047bb64183b20c291c, type: 2}
+  noteMissEvent: {fileID: 11400000, guid: 21f7b0bca26474e4e8aa5caa32795579, type: 2}
 --- !u!114 &6169160740619139869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,8 +144,8 @@ MonoBehaviour:
   m_ImpulseDefinition:
     m_ImpulseChannel: 1
     m_RawSignal: {fileID: 11400000, guid: 9297276884e77144e8228af4f36f6a6b, type: 2}
-    m_AmplitudeGain: 1
-    m_FrequencyGain: 1
+    m_AmplitudeGain: 0.2
+    m_FrequencyGain: 1.4
     m_RepeatMode: 0
     m_Randomize: 1
     m_TimeEnvelope:
@@ -161,7 +163,7 @@ MonoBehaviour:
         m_RotationOrder: 4
       m_AttackTime: 0
       m_SustainTime: 0.1
-      m_DecayTime: 0.6
+      m_DecayTime: 0.4
       m_ScaleWithImpact: 1
       m_HoldForever: 0
     m_ImpactRadius: 100
@@ -5067,6 +5069,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4838415992713416057}
   - component: {fileID: 6821457276593689253}
+  - component: {fileID: 3068151717437863166}
   m_Layer: 0
   m_Name: NoteContainer
   m_TagString: Untagged
@@ -5108,3 +5111,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3068151717437863166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6344442424583690657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 674aae36acae7204f89d0ddb64a7916a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
