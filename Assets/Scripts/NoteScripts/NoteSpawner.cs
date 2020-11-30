@@ -21,6 +21,8 @@ public class NoteSpawner : MonoBehaviour
 
     private void SpawnNote(Tuple<float, int, string, float> noteInfo)
     {
+        if (noteInfo.Item2 >= notePrefab.Count)
+            return;
         GameObject.Instantiate(notePrefab[noteInfo.Item2], spawnPoints[noteInfo.Item2].position, Quaternion.identity);  
     }
 }
