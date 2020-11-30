@@ -27,7 +27,7 @@ public class Composer : MonoBehaviour
     private float songPositionInBeats;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {   
         
         this.chart = new Chart(chartFile);
@@ -35,14 +35,17 @@ public class Composer : MonoBehaviour
         Conductor.OnBeat += beatEvent;
         Chart.BPMChangeCallback += updateBeat;
 
-        if(autoStartSong)
-            this.conductor.startMusic();
-
         var chartBPM = this.chart.getBPMAt(0);
         if(chartBPM >= 0)
             this.conductor.setBPM(chartBPM);
         else
             Debug.Log("WTF");
+    }
+
+    private void Start()
+    {
+        if (autoStartSong)
+            StartCoroutine(SongDelay());
     }
 
     // Update is called once per frame
@@ -101,4 +104,10 @@ public class Composer : MonoBehaviour
         this.songPositionInBeats = songPositionInBeats;
     }
 
+    IEnumerator SongDelay()
+    {
+        yield return new WaitForSeconds(2f);
+
+        this.conductor.startMusic();
+    }
 }

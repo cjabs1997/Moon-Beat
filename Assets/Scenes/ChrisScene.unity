@@ -434,7 +434,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.2385178
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -526,7 +526,7 @@ MonoBehaviour:
   secPerBeat: 0
   songPosition: 0
   songPositionInBeats: 0
-  dspSongTime: 0
+  dspSongTime: 1330.304
   musicSource: {fileID: 341954826}
   firstBeatOffset: 7.4
   isPlaying: 0
@@ -544,7 +544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chartFile: {fileID: 4900000, guid: 462e11f62f8964c4e897a17976869870, type: 3}
   conductor: {fileID: 341954827}
-  autoStartSong: 0
+  autoStartSong: 1
 --- !u!4 &341954829
 Transform:
   m_ObjectHideFlags: 0
