@@ -11,6 +11,9 @@ public class ButtonController : MonoBehaviour
     [Tooltip("Color for the button while it is being pressed.")]
     public Color pressedColor;
 
+    [Header("Events")]
+    public GameEvent missPressEvent;
+
     private SpriteRenderer m_SpriteRenderer;
     private GameObject selectedNote;
     private Animator m_Animator;
@@ -34,6 +37,10 @@ public class ButtonController : MonoBehaviour
             if (selectedNote)
             {
                 selectedNote.GetComponent<NoteController>().HitNote();
+            }
+            else
+            {
+                missPressEvent.Raise();
             }
         }
         else if(Input.GetKeyUp(activationKey))
