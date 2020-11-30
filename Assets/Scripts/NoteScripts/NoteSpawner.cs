@@ -8,12 +8,6 @@ public class NoteSpawner : MonoBehaviour
     public List<GameObject> notePrefab;
     public List<Transform> spawnPoints;
 
-    void Start()
-    {
-        Composer.GenNoteCallback += SpawnNote;
-    }
-
-
     void Update()
     {
         
@@ -24,5 +18,15 @@ public class NoteSpawner : MonoBehaviour
         if (noteInfo.Item2 >= notePrefab.Count)
             return;
         GameObject.Instantiate(notePrefab[noteInfo.Item2], spawnPoints[noteInfo.Item2].position, Quaternion.identity);  
+    }
+
+    private void OnEnable()
+    {
+        Composer.GenNoteCallback += SpawnNote;
+    }
+
+    private void OnDisable()
+    {
+        Composer.GenNoteCallback -= SpawnNote;
     }
 }

@@ -14,6 +14,7 @@ public class PauseScreen : MonoBehaviour
     {
         pauseMenu = this.transform.GetChild(0).gameObject;
         defaultTimeScale = Time.timeScale;
+        Time.timeScale = 1f;
     }
 
     private void Update()
