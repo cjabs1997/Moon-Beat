@@ -528,7 +528,7 @@ MonoBehaviour:
   songPositionInBeats: 0
   dspSongTime: 1330.304
   musicSource: {fileID: 341954826}
-  firstBeatOffset: 7.4
+  firstBeatOffset: 4.85
   isPlaying: 0
 --- !u!114 &341954828
 MonoBehaviour:
