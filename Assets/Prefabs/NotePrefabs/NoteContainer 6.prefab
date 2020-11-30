@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e8e2c8e85a438b045abac6178876f7ba, type: 3}
-  m_Color: {r: 0.02352941, g: 0.2186152, b: 1, a: 1}
+  m_Color: {r: 0.050236296, g: 0.02352941, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 989a6e1240c3f0049aff4d2a34e929bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionEffect: {fileID: 9161832214396399882, guid: 8641459bc7284f641b30c2bf8f8e0288, type: 3}
+  explosionEffect: {fileID: 9161832214396399882, guid: 856e97c5db5fecd4982e155527f41d90, type: 3}
   noteHitEvent: {fileID: 11400000, guid: 2ff79632d67253047bb64183b20c291c, type: 2}
   noteMissEvent: {fileID: 11400000, guid: 21f7b0bca26474e4e8aa5caa32795579, type: 2}
 --- !u!114 &6169160740619139869
@@ -5071,7 +5071,7 @@ GameObject:
   - component: {fileID: 6821457276593689253}
   - component: {fileID: 3068151717437863166}
   m_Layer: 0
-  m_Name: NoteContainer 5
+  m_Name: NoteContainer 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
