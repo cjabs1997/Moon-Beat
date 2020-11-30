@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notePrefab:
-  - {fileID: 6344442424583690657, guid: 61cd1fdd8288f2a4093a39cade1de149, type: 3}
+  - {fileID: 6344442424583690657, guid: 38b8b204a814915409026542a7ddebd5, type: 3}
   - {fileID: 6344442424583690657, guid: fec5ea059ff3780459af40c0a3fac617, type: 3}
   - {fileID: 6344442424583690657, guid: e7c00f421e3da0d479f12830f93e097a, type: 3}
   - {fileID: 6344442424583690657, guid: a86c122843e4fd748a363600dbc95db2, type: 3}
