@@ -31,6 +31,9 @@ public class ScoreManager : MonoBehaviour
     [Tooltip("GameEvent raised when the multiplier value is updated.")]
     public GameEvent updateMultiplierEvent;
 
+    public int missButtonScoreLoss;
+    public int missNoteScoreLoss;
+
 
     private int numNotesHitInARow = 0;
     private int numNotesMissedInARow = 0;
@@ -58,6 +61,7 @@ public class ScoreManager : MonoBehaviour
     {
         numNotesHitInARow = 0;
         ++numNotesMissedInARow;
+        score.ChangeValue(-missNoteScoreLoss);
 
         numNotesMissedInARow = numNotesMissedInARow % scaleMissNumNotes;
 
@@ -66,6 +70,8 @@ public class ScoreManager : MonoBehaviour
             currMultiplier.Value = Mathf.Max(currMultiplier.Value - multiplierScaleMiss, 1);
             updateMultiplierEvent.Raise();
         }
+
+        updateScoreEvent.Raise();
     }
 
     /// <summary>
@@ -85,6 +91,13 @@ public class ScoreManager : MonoBehaviour
             currMultiplier.Value = Mathf.Min(multiplierScaleHit + currMultiplier.Value, maxMultiplier);
             updateMultiplierEvent.Raise();
         }
+
+        updateScoreEvent.Raise();
+    }
+
+    public void MissedButton()
+    {
+        score.ChangeValue(-missButtonScoreLoss);
 
         updateScoreEvent.Raise();
     }

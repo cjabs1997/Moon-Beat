@@ -1154,6 +1154,7 @@ GameObject:
   - component: {fileID: 2050448385}
   - component: {fileID: 2050448387}
   - component: {fileID: 2050448388}
+  - component: {fileID: 2050448389}
   m_Layer: 0
   m_Name: ScoreManagement
   m_TagString: Untagged
@@ -1183,6 +1184,8 @@ MonoBehaviour:
   multiplierScaleMiss: 1
   scaleMissNumNotes: 3
   updateMultiplierEvent: {fileID: 11400000, guid: 7376aeb3644db0746923acef78bc2be7, type: 2}
+  missButtonScoreLoss: 1
+  missNoteScoreLoss: 5
 --- !u!4 &2050448386
 Transform:
   m_ObjectHideFlags: 0
@@ -1244,6 +1247,34 @@ MonoBehaviour:
       - m_Target: {fileID: 2050448385}
         m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
         m_MethodName: NoteMissed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2050448389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050448384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 187c3e581a7778140966ed75abac241f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: d21e98cfe5b8fa445a5b22d635c739fd, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2050448385}
+        m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
+        m_MethodName: MissedButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1665,6 +1696,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7671257926132556955, guid: 97ae9726bd57f3b4ea17c2b0f8da2d8b, type: 3}
+      propertyPath: missPressEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: d21e98cfe5b8fa445a5b22d635c739fd, type: 2}
     - target: {fileID: 7671257926132558692, guid: 97ae9726bd57f3b4ea17c2b0f8da2d8b, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -1673,6 +1708,10 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7671257926491276227, guid: 97ae9726bd57f3b4ea17c2b0f8da2d8b, type: 3}
+      propertyPath: missPressEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: d21e98cfe5b8fa445a5b22d635c739fd, type: 2}
     - target: {fileID: 7671257926491276236, guid: 97ae9726bd57f3b4ea17c2b0f8da2d8b, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -1681,6 +1720,10 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7671257926545120605, guid: 97ae9726bd57f3b4ea17c2b0f8da2d8b, type: 3}
+      propertyPath: missPressEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: d21e98cfe5b8fa445a5b22d635c739fd, type: 2}
     - target: {fileID: 7671257926545120606, guid: 97ae9726bd57f3b4ea17c2b0f8da2d8b, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -1689,6 +1732,10 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7671257926813571064, guid: 97ae9726bd57f3b4ea17c2b0f8da2d8b, type: 3}
+      propertyPath: missPressEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: d21e98cfe5b8fa445a5b22d635c739fd, type: 2}
     - target: {fileID: 7671257926813571065, guid: 97ae9726bd57f3b4ea17c2b0f8da2d8b, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -1705,6 +1752,10 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7671257927403646711, guid: 97ae9726bd57f3b4ea17c2b0f8da2d8b, type: 3}
+      propertyPath: missPressEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: d21e98cfe5b8fa445a5b22d635c739fd, type: 2}
     - target: {fileID: 7671257927664741440, guid: 97ae9726bd57f3b4ea17c2b0f8da2d8b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
