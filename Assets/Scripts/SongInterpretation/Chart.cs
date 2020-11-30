@@ -12,8 +12,6 @@ public class Chart
     // TODO Call event emit everytime there's a bpm change
 
     // bpm 
-    public delegate void BPMChange(float newBPM);
-    public static event BPMChange BPMChangeCallback;
     private List<Tuple<float, float>> bpms;
 
     // chart parsing
@@ -87,15 +85,36 @@ public class Chart
             return null;
         var last = new List<Tuple<float,int,string,float>>(this.playList[this.playList.Count-1]);
 
+        /*
+         * 
+         * Handling BPM changes elsewhere now...
         // emit event if bpm changes
         var bpm = getBPMAt(last[0].Item1);
+        //Debug.Log(bpm);
         if(BPMChangeCallback != null &&  bpm >= 0)
         {
             BPMChangeCallback(bpm);
         }
+        */
 
         // remove note from playlist
         this.playList.RemoveAt(this.playList.Count-1);
+        return last;
+    }
+
+    public List<Tuple<float, float>> GetNextBeat()
+    {
+        // Out of bpm changes, do nothing
+        if (bpms.Count == 0)
+            return null;
+
+        // I am hella dumb and could not get the one liner for this to work :)
+        var last = new List<Tuple<float, float>>();
+        Tuple<float, float> nextBeat = bpms[bpms.Count - 1];
+
+        last.Add(nextBeat);
+
+        bpms.RemoveAt(bpms.Count - 1);
         return last;
     }
 
@@ -158,7 +177,12 @@ public class Chart
 
         return res;
     }
+    
 
+    /// <summary>
+    /// Add all the BPM changes to a list in a reverse order (first change is at the end of the list).
+    /// </summary>
+    /// <returns>Item1 is when the BPM should change (in beats?), Item2 is what the BPM should change to.</returns>
     private List<Tuple<float, float>> convertBpm()
     {
         var bpms = new List<Tuple<float, float>>();
@@ -174,6 +198,21 @@ public class Chart
                 }
             }
         }
+        /*
+        Debug.Log(bpms[0].Item1);
+        Debug.Log(bpms[0].Item2);
+
+        Debug.Log(bpms[1].Item1);
+        Debug.Log(bpms[1].Item2);
+        
+
+        Debug.Log(bpms[2].Item1);
+        Debug.Log(bpms[2].Item2);
+        
+        Debug.Log(bpms[3].Item1);
+        Debug.Log(bpms[3].Item2);
+        */
+
         return bpms;
     }
 

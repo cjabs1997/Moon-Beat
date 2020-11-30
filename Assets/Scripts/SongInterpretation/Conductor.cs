@@ -40,7 +40,6 @@ public class Conductor : MonoBehaviour
     private float inverseSampleRate;
 
     public bool isPlaying;
-
     // Start is called before the first frame update
     void Awake()
     {  
@@ -50,10 +49,16 @@ public class Conductor : MonoBehaviour
 
         songBpm = songBpm < 0 ? 0 : songBpm; // quick negative reset
 
+        /*
+         * // All of this is redundant. It all gets overwritten by what happens in the Awake call of Composer or vice versa. We should rely on that (since 
+         * // it pulls directly from the chart) instead of this auto calculator.
+         * 
+         * 
         // Automatically calculate song BPM if not specified
         // Automatic calculation can be off, so try and rely on manual input
         if(songBpm == 0){
-            songBpm = UniBpmAnalyzer.AnalyzeBpm(musicSource.clip);
+            //songBpm = UniBpmAnalyzer.AnalyzeBpm(musicSource.clip); // This is spitting out weird things
+            Debug.Log("BPM: " +  songBpm);
             if (songBpm < 0)
             {
                 Debug.LogError("AudioClip is null.");
@@ -63,10 +68,16 @@ public class Conductor : MonoBehaviour
 
         //Calculate the number of seconds in each beat
         secPerBeat = 60f / songBpm;
+        */
 
         // Get inverse sample rate for calculating songPosition
         inverseSampleRate = (float)1/musicSource.clip.frequency;
 
+    }
+
+    private void Start()
+    {
+        songPositionInBeats = songPosition / secPerBeat;
     }
 
     // Update is called once per frame
@@ -85,11 +96,12 @@ public class Conductor : MonoBehaviour
 
         previousSongPositionInBeats = songPositionInBeats;
 
-        //determine how many beats since the song started
-        songPositionInBeats = songPosition / secPerBeat;
+        if (isPlaying)
+            songPositionInBeats = songPositionInBeats + (Time.deltaTime / secPerBeat);
+
 
         // determine if new beat event
-        if(previousSongPositionInBeats != songPositionInBeats)
+        if (previousSongPositionInBeats != songPositionInBeats)
         {
             if(OnBeat != null)
                 OnBeat(songPositionInBeats);

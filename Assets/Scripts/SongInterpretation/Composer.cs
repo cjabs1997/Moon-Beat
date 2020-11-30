@@ -23,6 +23,7 @@ public class Composer : MonoBehaviour
     private int resolution;
 
     private List<Tuple<float,int,string,float>> curBeatNotes;
+    private List<Tuple<float, float>> curBeatSync;
 
     private float songPositionInBeats;
 
@@ -32,8 +33,6 @@ public class Composer : MonoBehaviour
         
         this.chart = new Chart(chartFile);
         this.conductor = GetComponent<Conductor>();
-        Conductor.OnBeat += beatEvent;
-        Chart.BPMChangeCallback += updateBeat;
 
         var chartBPM = this.chart.getBPMAt(0);
         if(chartBPM >= 0)
@@ -63,11 +62,15 @@ public class Composer : MonoBehaviour
             this.curBeatNotes = null;
         }
 
-    }
-
-    void OnDestroy()
-    {
-        Conductor.OnBeat -= beatEvent;
+        if (curBeatSync == null)
+        {
+            this.curBeatSync = this.chart.GetNextBeat();
+        }
+        if(curBeatSync != null && this.curBeatSync[0].Item1 <= this.songPositionInBeats && conductor.isPlaying)
+        {
+            conductor.setBPM(curBeatSync[0].Item2);
+            this.curBeatSync = null;
+        }
     }
 
     public void startSong()
@@ -109,5 +112,15 @@ public class Composer : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         this.conductor.startMusic();
+    }
+
+    private void OnEnable()
+    {
+        Conductor.OnBeat += beatEvent;
+    }
+
+    private void OnDisable()
+    {
+        Conductor.OnBeat -= beatEvent;
     }
 }
