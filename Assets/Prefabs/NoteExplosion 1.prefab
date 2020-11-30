@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9161832214396399876}
   - component: {fileID: 9161832214396399877}
   m_Layer: 0
-  m_Name: NoteExplosion
+  m_Name: NoteExplosion 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -236,7 +236,7 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.79607844, g: 0, b: 0, a: 1}
+      minColor: {r: 0.8018868, g: 0.011347434, b: 0.011347434, a: 1}
       maxColor: {r: 1, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2

@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e8e2c8e85a438b045abac6178876f7ba, type: 3}
-  m_Color: {r: 1, g: 0.023584902, b: 0.023584902, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 989a6e1240c3f0049aff4d2a34e929bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionEffect: {fileID: 6344442424583690657}
+  explosionEffect: {fileID: 9161832214396399882, guid: 30ca3e83af1cc15439c254d89f9b116f, type: 3}
   noteHitEvent: {fileID: 11400000, guid: 2ff79632d67253047bb64183b20c291c, type: 2}
   noteMissEvent: {fileID: 11400000, guid: 21f7b0bca26474e4e8aa5caa32795579, type: 2}
 --- !u!114 &6169160740619139869
