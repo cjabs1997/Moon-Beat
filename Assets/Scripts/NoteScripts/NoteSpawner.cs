@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class NoteSpawner : MonoBehaviour
 {
-    public GameObject notePrefab;
+    public List<GameObject> notePrefab;
     public List<Transform> spawnPoints;
 
     void Start()
@@ -21,6 +21,6 @@ public class NoteSpawner : MonoBehaviour
 
     private void SpawnNote(Tuple<float, int, string, float> noteInfo)
     {
-        GameObject.Instantiate(notePrefab, spawnPoints[noteInfo.Item2].position, Quaternion.identity);  
+        GameObject.Instantiate(notePrefab[noteInfo.Item2], spawnPoints[noteInfo.Item2].position, Quaternion.identity);  
     }
 }

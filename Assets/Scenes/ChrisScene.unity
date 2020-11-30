@@ -406,7 +406,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786d27b089391294fb7512b77518db50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notePrefab: {fileID: 6344442424583690657, guid: 13689df8038f6d64eb08c22ad6bd204d, type: 3}
+  notePrefab:
+  - {fileID: 6344442424583690657, guid: 61cd1fdd8288f2a4093a39cade1de149, type: 3}
+  - {fileID: 6344442424583690657, guid: fec5ea059ff3780459af40c0a3fac617, type: 3}
+  - {fileID: 6344442424583690657, guid: e7c00f421e3da0d479f12830f93e097a, type: 3}
+  - {fileID: 6344442424583690657, guid: a86c122843e4fd748a363600dbc95db2, type: 3}
+  - {fileID: 6344442424583690657, guid: 13689df8038f6d64eb08c22ad6bd204d, type: 3}
   spawnPoints:
   - {fileID: 2136809842}
   - {fileID: 909327981}
@@ -1448,7 +1453,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -109.48618, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
