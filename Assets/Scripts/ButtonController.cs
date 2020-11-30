@@ -17,11 +17,13 @@ public class ButtonController : MonoBehaviour
     private SpriteRenderer m_SpriteRenderer;
     private GameObject selectedNote;
     private Animator m_Animator;
+    private Collider2D m_Collider2D;
 
     private void Awake()
     {
         m_SpriteRenderer = this.GetComponent<SpriteRenderer>();
         m_Animator = this.GetComponent<Animator>();
+        m_Collider2D = this.GetComponent<Collider2D>();
     }
 
 
@@ -32,7 +34,22 @@ public class ButtonController : MonoBehaviour
         {
             m_Animator.SetBool("Selected", true);
             m_SpriteRenderer.color = pressedColor;
+            int numHits = 0;
+            RaycastHit2D[] hits = new RaycastHit2D[5];
+            numHits = m_Collider2D.Cast(Vector2.zero, hits);
 
+            if (numHits == 0)
+                missPressEvent.Raise();
+            else
+            {
+                for (int i = 0; i < numHits; ++i)
+                {
+                    GameObject note = hits[i].transform.gameObject;
+                    note.GetComponent<NoteController>().HitNote();
+                }
+            }
+
+            /*
             // If there is a note within our collider destroy it
             if (selectedNote)
             {
@@ -42,6 +59,7 @@ public class ButtonController : MonoBehaviour
             {
                 missPressEvent.Raise();
             }
+            */
         }
         else if(Input.GetKeyUp(activationKey))
         {
