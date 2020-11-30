@@ -148,7 +148,7 @@ MonoBehaviour:
   activationKey: 55
   defaultColor: {r: 1, g: 1, b: 1, a: 0.78431374}
   pressedColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 0.78431374}
-  missPressEvent: {fileID: 0}
+  missPressEvent: {fileID: 11400000, guid: d21e98cfe5b8fa445a5b22d635c739fd, type: 2}
 --- !u!95 &8584953935179951800
 Animator:
   serializedVersion: 3
@@ -316,7 +316,7 @@ MonoBehaviour:
   activationKey: 54
   defaultColor: {r: 1, g: 1, b: 1, a: 0.78431374}
   pressedColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 0.78431374}
-  missPressEvent: {fileID: 0}
+  missPressEvent: {fileID: 11400000, guid: d21e98cfe5b8fa445a5b22d635c739fd, type: 2}
 --- !u!95 &2194900439663057699
 Animator:
   serializedVersion: 3
