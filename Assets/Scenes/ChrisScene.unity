@@ -533,7 +533,7 @@ MonoBehaviour:
   songPositionInBeats: 0
   dspSongTime: 1330.304
   musicSource: {fileID: 341954826}
-  firstBeatOffset: 4.85
+  firstBeatOffset: 4.5
   isPlaying: 0
 --- !u!114 &341954828
 MonoBehaviour:
@@ -2843,8 +2843,16 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7671257927403646705, guid: 97ae9726bd57f3b4ea17c2b0f8da2d8b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7671257927403646706, guid: 97ae9726bd57f3b4ea17c2b0f8da2d8b, type: 3}
       propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7671257927403646706, guid: 97ae9726bd57f3b4ea17c2b0f8da2d8b, type: 3}
+      propertyPath: m_EdgeRadius
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7671257927403646707, guid: 97ae9726bd57f3b4ea17c2b0f8da2d8b, type: 3}
@@ -2855,6 +2863,18 @@ PrefabInstance:
       propertyPath: missPressEvent
       value: 
       objectReference: {fileID: 11400000, guid: d21e98cfe5b8fa445a5b22d635c739fd, type: 2}
+    - target: {fileID: 7671257927403646711, guid: 97ae9726bd57f3b4ea17c2b0f8da2d8b, type: 3}
+      propertyPath: defaultColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7671257927403646711, guid: 97ae9726bd57f3b4ea17c2b0f8da2d8b, type: 3}
+      propertyPath: defaultColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7671257927403646711, guid: 97ae9726bd57f3b4ea17c2b0f8da2d8b, type: 3}
+      propertyPath: defaultColor.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7671257927664741440, guid: 97ae9726bd57f3b4ea17c2b0f8da2d8b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
