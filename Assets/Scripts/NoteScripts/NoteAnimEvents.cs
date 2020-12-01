@@ -16,4 +16,14 @@ public class NoteAnimEvents : MonoBehaviour
     {
         m_NoteController.MissNote();
     }
+
+    public void MissedLongNote()
+    {
+        this.GetComponentInChildren<LongNoteController>().MissNote();
+    }
+
+    public void HideLineRenderer()
+    {
+        this.GetComponentInChildren<LineRenderer>().enabled = false;
+    }
 }

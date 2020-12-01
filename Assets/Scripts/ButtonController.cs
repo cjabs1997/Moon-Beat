@@ -18,6 +18,7 @@ public class ButtonController : MonoBehaviour
     private GameObject selectedNote;
     private Animator m_Animator;
     private Collider2D m_Collider2D;
+    private LongNoteController selectedLongNote;
 
     private void Awake()
     {
@@ -38,33 +39,43 @@ public class ButtonController : MonoBehaviour
             RaycastHit2D[] hits = new RaycastHit2D[5];
             numHits = m_Collider2D.Cast(Vector2.zero, hits);
 
+            // We didn't find any notes in our range when we hit the button
             if (numHits == 0)
-                missPressEvent.Raise();
-            else
             {
+                missPressEvent.Raise();
+            }
+            else // We hit some notes!
+            {
+                // Iterate over all the notes we hit and call the appropriate functions.
                 for (int i = 0; i < numHits; ++i)
                 {
                     GameObject note = hits[i].transform.gameObject;
-                    note.GetComponent<NoteController>().HitNote();
+                    // Regular note was hit
+                    if(note.TryGetComponent<NoteController>(out NoteController noteController))
+                    {
+                        noteController.HitNote();
+                    }
+                    // Long note was hit, want to make sure the distance isn't too extreme
+                    else if (Vector3.Distance(this.gameObject.transform.position, note.transform.position) <= 0.3f)
+                    {
+                        selectedLongNote = note.GetComponentInChildren<LongNoteController>();
+                        selectedLongNote.HitNote();
+                    }
                 }
             }
-
-            /*
-            // If there is a note within our collider destroy it
-            if (selectedNote)
-            {
-                selectedNote.GetComponent<NoteController>().HitNote();
-            }
-            else
-            {
-                missPressEvent.Raise();
-            }
-            */
         }
         else if(Input.GetKeyUp(activationKey))
         {
             if (m_Animator) { m_Animator.SetBool("Selected", false); }
             m_SpriteRenderer.color = defaultColor;
+
+            // If we release the key before the long note is finished playing we missed the note
+            if(selectedLongNote != null && !selectedLongNote.GetNoteFinished())
+            {
+                selectedLongNote.EarlyRelease();
+                selectedLongNote = null;
+                missPressEvent.Raise();
+            }
         }
     }
 
