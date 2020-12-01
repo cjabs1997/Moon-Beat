@@ -2426,12 +2426,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2700570445020476120, guid: 94914ee74f200744a9ae37ecc488c5c7, type: 3}
       propertyPath: firstBeatOffset
-      value: 3.9464662
+      value: 3.9900002
       objectReference: {fileID: 0}
     - target: {fileID: 2700570445020476121, guid: 94914ee74f200744a9ae37ecc488c5c7, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 87f93e4a241aaf84bb3e2975eabc32f0, type: 3}
+      objectReference: {fileID: 8300000, guid: d3dd105c2d307ec40b4230359bff3174, type: 3}
     - target: {fileID: 2700570445020476121, guid: 94914ee74f200744a9ae37ecc488c5c7, type: 3}
       propertyPath: m_Volume
       value: 0.2
@@ -2519,7 +2519,7 @@ PrefabInstance:
     - target: {fileID: 2700570445020476127, guid: 94914ee74f200744a9ae37ecc488c5c7, type: 3}
       propertyPath: chartFile
       value: 
-      objectReference: {fileID: 4900000, guid: 7d89cd687c31cd64599b00a9acea0b45, type: 3}
+      objectReference: {fileID: 4900000, guid: fd41f682941452845b83e88a36d0e7e8, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94914ee74f200744a9ae37ecc488c5c7, type: 3}
 --- !u!1001 &7671257927704605540

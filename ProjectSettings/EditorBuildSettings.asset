@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: f7ed498fec83c1a4881da698db8af070
   - enabled: 1
-    path: Assets/Scenes/ChrisScene.unity
-    guid: cdb124233c5369749931ba5261dd4570
+    path: Assets/Scenes/Furrelise.unity
+    guid: 9f31d762a3840e744beeb22b33d0a83c
+  - enabled: 1
+    path: Assets/Scenes/Waldenstein.unity
+    guid: 07b6b4e9df8ca1447ae2b059d66ae6b4
   m_configObjects: {}
