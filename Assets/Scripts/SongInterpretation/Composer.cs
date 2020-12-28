@@ -110,7 +110,6 @@ public class Composer : MonoBehaviour
     IEnumerator SongDelay()
     {
         yield return new WaitForSeconds(2f);
-
         this.conductor.startMusic();
     }
 
@@ -122,10 +121,5 @@ public class Composer : MonoBehaviour
     private void OnDisable()
     {
         Conductor.OnBeat -= beatEvent;
-    }
-
-    public void SetSonPosInBeats(float f)
-    {
-        songPositionInBeats = f;
     }
 }
