@@ -991,6 +991,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1213856358 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2700570445020476120, guid: 94914ee74f200744a9ae37ecc488c5c7, type: 3}
+  m_PrefabInstance: {fileID: 2700570444817032147}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa83045888a606d4eb435a9f20d71776, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1213856359 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2700570445020476127, guid: 94914ee74f200744a9ae37ecc488c5c7, type: 3}
+  m_PrefabInstance: {fileID: 2700570444817032147}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf7c3188140ced7478d2d5886771cf6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1368375474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1288,6 +1310,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseKey: 27
   audioSource: {fileID: 341954826}
+  composer: {fileID: 1213856359}
+  conductor: {fileID: 1213856358}
 --- !u!1 &1513165751
 GameObject:
   m_ObjectHideFlags: 0

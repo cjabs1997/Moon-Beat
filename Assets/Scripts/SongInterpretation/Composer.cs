@@ -123,4 +123,9 @@ public class Composer : MonoBehaviour
     {
         Conductor.OnBeat -= beatEvent;
     }
+
+    public void SetSonPosInBeats(float f)
+    {
+        songPositionInBeats = f;
+    }
 }
