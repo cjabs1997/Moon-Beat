@@ -14,7 +14,7 @@ public class ControlsManager : MonoBehaviour
     {
         m_CanvasGroup = this.GetComponentInChildren<CanvasGroup>();
 
-        config.ResetBinds();
+        //config.ResetBinds();
     }
 
     private void Start()
